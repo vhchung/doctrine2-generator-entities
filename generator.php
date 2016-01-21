@@ -5,8 +5,9 @@ $classLoader->register();
 $classLoader = new \Doctrine\Common\ClassLoader('Proxies', __DIR__);
 $classLoader->register();
 // config
+$entityFolder = __DIR__ . '/Entities';
 $config = new \Doctrine\ORM\Configuration();
-$config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/Entities'));
+$config->setMetadataDriverImpl($config->newDefaultAnnotationDriver($entityFolder));
 $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
 $config->setProxyDir(__DIR__ . '/Proxies');
 $config->setProxyNamespace('Proxies');
@@ -36,5 +37,5 @@ $generator = new Doctrine\ORM\Tools\EntityGenerator();
 $generator->setUpdateEntityIfExists(true);
 $generator->setGenerateStubMethods(true);
 $generator->setGenerateAnnotations(true);
-$generator->generate($metadata, __DIR__ . '/Entities');
-print 'Done!';
+$generator->generate($metadata, $$entityFolder);
+print PHP_EOL . 'Successfully generated entities to: `' . $entityFolder . '`' . PHP_EOL;
