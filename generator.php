@@ -37,5 +37,5 @@ $generator = new Doctrine\ORM\Tools\EntityGenerator();
 $generator->setUpdateEntityIfExists(true);
 $generator->setGenerateStubMethods(true);
 $generator->setGenerateAnnotations(true);
-$generator->generate($metadata, $$entityFolder);
+$generator->generate($metadata, $entityFolder);
 print PHP_EOL . 'Successfully generated entities to: `' . $entityFolder . '`' . PHP_EOL;
